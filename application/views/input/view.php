@@ -31,11 +31,11 @@
 	<?php foreach($input_developer as $input_developer_item) : ?>
 		<div>
             <ul>
-                <li>Tanggal Update: <?php echo $input_developer_item['prioritas']; ?></li>
-                <li>Progress: <?php echo $input_developer_item['tanggal_diskusi_internal']; ?></li>
-                <li>Keterangan: <?php echo $input_developer_item['tanggal_diskusi_owner']; ?></li>
-                <li>Status: <?php echo $input_developer_item['start_dev']; ?></li>
-                <li>Tanggal Realisasi: <?php echo $input_developer_item['finish_dev']; ?></li>
+                <li>Tanggal Update: <?php echo $input_developer_item['tanggal_update']; ?></li>
+                <li>Progress: <?php echo $input_developer_item['progress']; ?>%</li>
+                <li>Keterangan: <?php echo $input_developer_item['keterangan']; ?></li>
+                <li>Status: <?php echo $input_developer_item['status_progress']; ?></li>
+                <li>Tanggal Realisasi: <?php echo $input_developer_item['tanggal_realisasi']; ?></li>
             </ul>
 		</div>
 	<?php endforeach; ?>

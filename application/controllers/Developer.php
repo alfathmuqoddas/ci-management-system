@@ -42,6 +42,7 @@
 
 			$this->form_validation->set_rules('progress', 'Progress', 'required');
 			$this->form_validation->set_rules('status_progress', 'Status Progress', 'required');
+			$this->form_validation->set_rules('start_dev', 'Start Dev', 'required');
 
 			if($this->form_validation->run() === FALSE){
 				$this->load->view('templates/header');
@@ -54,7 +55,7 @@
 		}
 
 		public function delete($id){
-			$this->manager_model->delete_manager($id);
-			redirect('/developer');
+			$this->developer_model->delete_developer($id);
+			redirect('developer');
 		}
 	}

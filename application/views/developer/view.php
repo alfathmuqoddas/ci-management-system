@@ -37,30 +37,51 @@
                 <li>Status: <?php echo $input_developer_item['status_progress']; ?></li>
                 <li>Tanggal Realisasi: <?php echo $input_developer_item['tanggal_realisasi']; ?></li>
             </ul>
+            <a class="btn btn-sm btn-danger" href="<?php echo site_url(); ?>/developer/delete/<?php echo $input_developer_item['id'] ?>">Delete</a>
 		</div>
 	<?php endforeach; ?>
 <?php else : ?>
 	<p>Developer Belum Memberi Input Lanjutan</p>
 <?php endif; ?>
 
-<h3>Create Developer Input</h3>
 <?php echo validation_errors(); ?>
-<?php echo form_open('developer/create/'.$input['id']); ?>
-    <div class="form-group" style="max-width: 500px;">
-        <label for="tanggal_update">Tanggal Update</label>
-        <input  class="form-control"  type="date" name="tanggal_update" />
-        <br />
-        <label for="progress">Progress(%)</label>
-        <input class="form-control" type="number" min='0' max='100' name="progress"></input>
-        <br />
-        <label for="keterangan">Keterangan</label>
-        <input class="form-control" type="text" name="keterangan"></input>
-        </br>
-        <label for="status">Status</label>
-        <input class="form-control" type="text" name="status"></input>
-        <br />
-        <label for="tanggal_realisasi">Finish Development</label>
-        <input  class="form-control"  type="date" name="tanggal_realisasi" />
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-developer-input">
+  Create Developer Input
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="create-developer-input" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Developer Input</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo form_open('developer/create/'.$input['id']); ?>
+            <div class="form-group" style="max-width: 500px;">
+                <label for="tanggal_update">Tanggal Update</label>
+                <input  class="form-control"  type="date" name="tanggal_update" />
+                <br />
+                <label for="progress">Progress(%)</label>
+                <input class="form-control" type="number" min='0' max='100' name="progress"></input>
+                <br />
+                <label for="keterangan">Keterangan</label>
+                <input class="form-control" type="text" name="keterangan"></input>
+                </br>
+                <label for="status_progress">Status</label>
+                <input class="form-control" type="text" name="status_progress"></input>
+                <br />
+                <label for="tanggal_realisasi">Finish Development</label>
+                <input  class="form-control"  type="date" name="tanggal_realisasi" />
+            </div>
+            <input type="submit" class="btn btn-primary" name="submit" value="Create Manager Input" />
+        </form>
+      </div>
     </div>
-    <input type="submit" class="btn btn-primary" name="submit" value="Create Manager Input" />
-</form>
+  </div>
+</div>

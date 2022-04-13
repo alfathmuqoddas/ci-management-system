@@ -18,7 +18,7 @@ class Input_model extends CI_Model {
 		return $query->row_array();
 	}
 
-	public function set_input()
+	public function set_input($file_upload)
 	{
 		$data = array(
 			'jenis' => $this->input->post('jenis'),
@@ -28,7 +28,8 @@ class Input_model extends CI_Model {
 			'source_aplikasi' => $this->input->post('source_aplikasi'),
 			'tanggal_notin' => $this->input->post('tanggal_notin'),
 			'tanggal_user_request' => $this->input->post('tanggal_user_request'),
-			'user_id' => $this->session->userdata('user_id')
+			'user_id' => $this->session->userdata('user_id'),
+			'dokumen' => $file_upload
 		);
 
 		return $this->db->insert('user_input', $data);

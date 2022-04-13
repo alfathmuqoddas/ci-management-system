@@ -39,7 +39,7 @@
             $data['input'] = $this->input_model->get_input($slug);
 
 			$this->form_validation->set_rules('prioritas', 'Prioritas', 'required');
-			$this->form_validation->set_rules('tanggal_diskusi_internal', 'Tanggal Diskusi', 'required');
+			$this->form_validation->set_rules('tanggal_diskusi_internal', 'Tanggal Diskusi Internal', 'required');
 			$this->form_validation->set_rules('start_dev', 'Start Dev', 'required');
 
 			if($this->form_validation->run() === FALSE){

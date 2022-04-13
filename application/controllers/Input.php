@@ -5,7 +5,8 @@ class Input extends CI_Controller {
 		parent::__construct();
 		$this->load->model('input_model');
 		$this->load->model('manager_model');
-		$this->load->helper('url_helper');
+		$this->load->model('developer_model');
+		$this->load->helper(array('form','url','url_helper'));
 	}
 
 	public function index()
@@ -22,6 +23,7 @@ class Input extends CI_Controller {
 		$data['input'] = $this->input_model->get_input($slug);
 		$input_id = $data['input']['id'];
 		$data['input_manager'] = $this->manager_model->get_manager($input_id);
+		$data['input_developer'] = $this->developer_model->get_developer($input_id);
 
 		if(empty($data['input'])){
 			show_404();
@@ -45,15 +47,28 @@ class Input extends CI_Controller {
 		// $this->form_validation->set_rules('no_notin', 'No Notin', 'required');
 		$this->form_validation->set_rules('source_aplikasi', 'Source Aplikasi', 'required');
 
-		if ($this->form_validation->run() === FALSE)
-		{
+		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('templates/header', $data);
 			$this->load->view('input/create');
 			$this->load->view('templates/footer');
-		}
-		else
-		{
-			$this->input_model->set_input();
+		} else {
+			// Upload doc
+			$config['upload_path'] = './assets/images/posts';
+			$config['allowed_types'] = 'jpg|png|pdf|xls|xlsx|txt';
+			$config['max_size'] = '4096';
+
+			$this->load->library('upload', $config);
+
+			if(!$this->upload->do_upload()){
+				$errors = array('error' => $this->upload->display_errors());
+				$file_upload = 'no file uploaded';
+			} else {
+				$data = array('upload_data' => $this->upload->data());
+				$file_upload = $_FILES['userfile']['name'];
+			}
+
+			$this->input_model->set_input($file_upload);
+
 			redirect('input');
 		}
 	}

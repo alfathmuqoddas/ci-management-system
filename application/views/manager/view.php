@@ -27,32 +27,46 @@
 	<p>Manager Belum Memberi Input Lanjutan</p>
 <?php endif; ?>
 
-<?php if($this->session->userdata('logged_in')) : ?>
-<h3>Manager Input</h3>
-<?php echo validation_errors(); ?>
-<?php echo form_open('manager/create/'.$input['id']); ?>
-    <div class="form-group" style="max-width: 500px;">
-        <label for="prioritas">Prioritas</label>
-        <input  class="form-control"  type="text" name="prioritas" />
-        <br />
-        <label for="tanggal_diskusi_internal">Tanggal Diskusi Internal</label>
-        <input class="form-control" type="date" name="tanggal_diskusi_internal"></input>
-        <br />
-        <label for="tanggal_diskusi_owner">Tanggal Diskusi Owner</label>
-        <input class="form-control" type="date" name="tanggal_diskusi_owner"></input>
-        </br>
-        <label for="start_dev">Start Development</label>
-        <input class="form-control" type="date" name="start_dev"></input>
-        <br />
-        <label for="finish_dev">Finish Development</label>
-        <input  class="form-control"  type="date" name="finish_dev" />
-        <br />
-        <label for="pic_developer">PIC Developer</label>
-        <input class="form-control" type="text" name="pic_developer"></input>
-        <br />
-        <label for="keterangan">Keterangan</label>
-        <input class="form-control" type="text" name="keterangan"></input>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-manager-input-modal">
+  Create Manager Input
+</button>
+
+<div class="modal fade" id="create-manager-input-modal" tabindex="-1" aria-labelledby="#create-manager-input-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Manager Input</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo form_open('manager/create/'.$input['id']); ?>
+            <div class="form-group" style="max-width: 500px;">
+                <label for="prioritas">Prioritas</label>
+                <input  class="form-control"  type="text" name="prioritas" />
+                <br />
+                <label for="tanggal_diskusi_internal">Tanggal Diskusi Internal</label>
+                <input class="form-control" type="date" name="tanggal_diskusi_internal"></input>
+                <br />
+                <label for="tanggal_diskusi_owner">Tanggal Diskusi Owner</label>
+                <input class="form-control" type="date" name="tanggal_diskusi_owner"></input>
+                </br>
+                <label for="start_dev">Start Development</label>
+                <input class="form-control" type="date" name="start_dev"></input>
+                <br />
+                <label for="finish_dev">Finish Development</label>
+                <input  class="form-control"  type="date" name="finish_dev" />
+                <br />
+                <label for="pic_developer">PIC Developer</label>
+                <input class="form-control" type="text" name="pic_developer"></input>
+                <br />
+                <label for="keterangan">Keterangan</label>
+                <input class="form-control" type="text" name="keterangan"></input>
+            </div>
+            <input type="submit" class="btn btn-primary" name="submit" value="Create Manager Input" />
+        </form>
+      </div>
     </div>
-    <input type="submit" class="btn btn-primary" name="submit" value="Create Manager Input" />
-</form>
-<?php endif; ?>
+  </div>
+</div>

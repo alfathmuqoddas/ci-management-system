@@ -25,6 +25,7 @@
             <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>input">User Input</a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>manager">Manager Input</a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>developer">Developer Input</a></li>
+            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>amgr">Amgr Input</a></li>
             <!-- <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>posts/create">Create Post</a></li> -->
             <!-- <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>categories/create">Create Category</a></li> -->
             <li class="nav-item"><a class="nav-link btn btn-sm btn-danger" href="<?php echo base_url(); ?>users/logout">Logout</a></li>

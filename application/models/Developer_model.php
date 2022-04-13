@@ -11,7 +11,8 @@
 				'progress' => $this->input->post('progress'),
 				'keterangan' => $this->input->post('keterangan'),
 				'status_progress' => $this->input->post('status_progress'),
-				'tanggal_realisasi' => $this->input->post('tanggal_realisasi')
+				'tanggal_realisasi' => $this->input->post('tanggal_realisasi'),
+				'response' =>'1'
 			);
 
 			return $this->db->insert('developer_input', $data);
@@ -22,7 +23,7 @@
 			return $query->result_array();
 		}
 
-		public function delete_manager($id){
+		public function delete_developer($id) {
 			$this->db->where('id', $id);
 			$this->db->delete('developer_input');
 			return true;

@@ -17,6 +17,7 @@
 		}
 
 		public function create_manager($input_id){
+			$yes = 1;
 			$data = array(
 				'input_id' => $input_id,
 				'prioritas' => $this->input->post('prioritas'),
@@ -27,7 +28,8 @@
 				'finish_dev' => $this->input->post('finish_dev'),
 				// 'jumlah_hari' => $this->input->post('jumlah'),
 				'pic_developer' => $this->input->post('pic_developer'),
-				'keterangan' => $this->input->post('keterangan')
+				'keterangan' => $this->input->post('keterangan'),
+				'response' =>'1'
 			);
 
 			return $this->db->insert('manager_input', $data);

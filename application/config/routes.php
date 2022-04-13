@@ -22,8 +22,10 @@ $route['manager/create'] = 'manager/create';
 $route['manager/view/(:any)'] = 'manager/view/$1';
 
 $route['developer'] = 'developer/index';
-$route['developer/create'] = 'developer/create';
 $route['developer/view/(:any)'] = 'developer/view/$1';
+
+$route['amgr'] = 'amgr/index';
+$route['amgr/view/(:any)'] = 'amgr/view/$1';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
