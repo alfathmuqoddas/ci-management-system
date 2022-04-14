@@ -27,7 +27,6 @@ class Input_model extends CI_Model {
 			'short_desc' => $this->input->post('short_desc'),
 			'source_aplikasi' => $this->input->post('source_aplikasi'),
 			'tanggal_notin' => $this->input->post('tanggal_notin'),
-			'tanggal_user_request' => $this->input->post('tanggal_user_request'),
 			'user_id' => $this->session->userdata('user_id'),
 			'dokumen' => $file_upload
 		);

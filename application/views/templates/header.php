@@ -3,6 +3,12 @@
 		<title><?php echo $title ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="http://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
+    <!-- <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    *{
+      font-family: 'Poppins', sans-serif;
+    }
+    </style> -->
 	</head>
 	<body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">

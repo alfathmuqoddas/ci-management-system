@@ -20,9 +20,6 @@
         <label for="no_user_request">No User Request</label>
         <input class="form-control" type="text" name="no_user_request"></input>
         <br />
-        <label for="tanggal_user_request">Tanggal User Request</label>
-        <input class="form-control" type="date" name="tanggal_user_request"></input>
-        <br />
         <label for="short_desc">Description</label>
         <input class="form-control" type="text" name="short_desc"></input>
         <br />

@@ -54,7 +54,7 @@ class Input extends CI_Controller {
 		} else {
 			// Upload doc
 			$config['upload_path'] = './assets/images/posts';
-			$config['allowed_types'] = 'jpg|png|pdf|xls|xlsx|txt';
+			$config['allowed_types'] = '*';
 			$config['max_size'] = '4096';
 
 			$this->load->library('upload', $config);

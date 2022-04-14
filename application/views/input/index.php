@@ -5,7 +5,7 @@
 <?php endif; ?>
 
 <div class="overflow-auto">
-<table class="table table-striped mt-5">
+<table class="table table-sm table-hover table-striped mt-5">
     <thead>
       <tr>
         <th>id</th>
