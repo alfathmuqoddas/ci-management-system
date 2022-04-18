@@ -54,12 +54,14 @@ class Amgr extends CI_Controller {
             $this->load->view('templates/footer');
         } else {
             $this->amgr_model->create_amgr($input_id);
+			$this->session->set_flashdata('post_created', 'Amgr input has been created');
             redirect('amgr');
         }
     }
 
     public function delete($id){
         $this->amgr_model->delete_amgr($id);
+		$this->session->set_flashdata('post_deleted', 'Amgr input has been deleted');
         redirect('amgr');
     }
 }

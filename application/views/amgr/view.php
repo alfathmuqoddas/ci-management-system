@@ -37,7 +37,6 @@
                 <li>Status: <?php echo $input_developer_item['status_progress']; ?></li>
                 <li>Tanggal Realisasi: <?php echo $input_developer_item['tanggal_realisasi']; ?></li>
             </ul>
-            <a class="btn btn-sm btn-danger" href="<?php echo site_url(); ?>/developer/delete/<?php echo $input_developer_item['id'] ?>">Delete</a>
 		</div>
 	<?php endforeach; ?>
 <?php else : ?>

@@ -61,7 +61,7 @@
       <?php endif; ?>
 
       <?php if($this->session->flashdata('post_deleted')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_deleted').'</p>'; ?>
+        <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('post_deleted').'</p>'; ?>
       <?php endif; ?>
 
       <?php if($this->session->flashdata('login_failed')): ?>

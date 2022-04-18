@@ -48,12 +48,14 @@
 				$this->load->view('templates/footer');
 			} else {
 				$this->manager_model->create_manager($input_id);
+				$this->session->set_flashdata('post_created', 'Manager input has been created');
 				redirect('manager');
 			}
 		}
 
 		public function delete($id){
 			$this->manager_model->delete_manager($id);
+			$this->session->set_flashdata('post_deleted', 'Manager input has been deleted');
 			redirect('manager');
 		}
 	}

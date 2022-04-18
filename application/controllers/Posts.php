@@ -105,7 +105,6 @@
 			// Check user
 			if($this->session->userdata('user_id') != $this->post_model->get_posts($slug)['user_id']){
 				redirect('posts');
-
 			}
 
 			$data['categories'] = $this->post_model->get_categories();

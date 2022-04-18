@@ -13,6 +13,7 @@
 	<?php foreach($input_manager as $input_manager_item) : ?>
 		<div>
             <ul>
+                <?php echo $input_manager_item['tanggal_manager_input']; ?>
                 <li>Prioritas: <?php echo $input_manager_item['prioritas']; ?></li>
                 <li>Tanggal Diskusi Internal: <?php echo $input_manager_item['tanggal_diskusi_internal']; ?></li>
                 <li>Tanggal Diskusi Owner: <?php echo $input_manager_item['tanggal_diskusi_owner']; ?></li>
@@ -20,7 +21,9 @@
                 <li>Finish Development: <?php echo $input_manager_item['finish_dev']; ?></li>
                 <li>PIC Developer: <?php echo $input_manager_item['pic_developer']; ?></li>
             </ul>
-            <?php if($this->session->userdata('logged_in')) : ?><a class="btn btn-sm btn-danger" href="<?php echo site_url(); ?>/manager/delete/<?php echo $input_manager_item['id'] ?>">Delete</a><?php endif; ?>
+            <?php if($this->session->userdata('logged_in')) : ?>
+              <?=anchor("manager/delete/".$input_manager_item['id'],"Delete",array('onclick' => "return confirm('Do you want delete this record?')", 'class' => "btn btn-danger btn-sm"))?>
+            <?php endif; ?>
 		</div>
 	<?php endforeach; ?>
 <?php else : ?>
@@ -44,7 +47,11 @@
         <?php echo form_open('manager/create/'.$input['id']); ?>
             <div class="form-group" style="max-width: 500px;">
                 <label for="prioritas">Prioritas</label>
-                <input  class="form-control"  type="text" name="prioritas" />
+                <select class='form-control' id="prioritas" name="prioritas">
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
                 <br />
                 <label for="tanggal_diskusi_internal">Tanggal Diskusi Internal</label>
                 <input class="form-control" type="date" name="tanggal_diskusi_internal"></input>

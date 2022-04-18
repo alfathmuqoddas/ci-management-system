@@ -13,6 +13,7 @@
 	<?php foreach($input_manager as $input_manager_item) : ?>
 		<div>
             <ul>
+                <?php echo $input_manager_item['tanggal_manager_input']; ?>
                 <li>Prioritas: <?php echo $input_manager_item['prioritas']; ?></li>
                 <li>Tanggal Diskusi Internal: <?php echo $input_manager_item['tanggal_diskusi_internal']; ?></li>
                 <li>Tanggal Diskusi Owner: <?php echo $input_manager_item['tanggal_diskusi_owner']; ?></li>
@@ -31,21 +32,53 @@
 	<?php foreach($input_developer as $input_developer_item) : ?>
 		<div>
             <ul>
+                <?php echo $input_developer_item['tanggal_developer_input']; ?>
                 <li>Tanggal Update: <?php echo $input_developer_item['tanggal_update']; ?></li>
                 <li>Progress: <?php echo $input_developer_item['progress']; ?>%</li>
                 <li>Keterangan: <?php echo $input_developer_item['keterangan']; ?></li>
                 <li>Status: <?php echo $input_developer_item['status_progress']; ?></li>
                 <li>Tanggal Realisasi: <?php echo $input_developer_item['tanggal_realisasi']; ?></li>
             </ul>
-            <a class="btn btn-sm btn-danger" href="<?php echo site_url(); ?>/developer/delete/<?php echo $input_developer_item['id'] ?>">Delete</a>
+            <?php if($this->session->userdata('logged_in')) : ?>
+              <!-- <a class="btn btn-sm btn-danger" href="<?php echo site_url(); ?>/developer/delete/<?php echo $input_developer_item['id'] ?>">Delete</a> -->
+              <?=anchor("developer/delete/".$input_developer_item['id'],"Delete",array('onclick' => "return confirm('Do you want delete this record?')", 'class' => "btn btn-danger btn-sm"))?>
+            <?php endif; ?>
 		</div>
 	<?php endforeach; ?>
 <?php else : ?>
 	<p>Developer Belum Memberi Input Lanjutan</p>
 <?php endif; ?>
 
-<?php echo validation_errors(); ?>
+<h2>REVISI</h2>
+<?php if($input_amgr) : ?>
+    <?php foreach($input_amgr as $input_amgr_item) : ?>
+        <h3>UAT Internal</h3>
+        <div>
+            <ul>
+                <li>No Dokumen UAT Internal: <?php echo $input_amgr_item['no_dok_uat_int']; ?></li>
+                <li>Tanggal UAT: <?php echo $input_amgr_item['tanggal_uat_int']; ?></li>
+                <li>Hasil UAT: <?php echo $input_amgr_item['hasil_uat_int']; ?></li>
+                <li>Status Revisi: <?php echo $input_amgr_item['status_revisi_int']; ?></li>
+                <li>List Revisi: <?php echo $input_amgr_item['list_revisi_int']; ?></li>
+            </ul>
+		</div>
 
+        <h3>UAT User</h3>
+        <div>
+            <ul>
+                <li>No Dokumen UAT User: <?php echo $input_amgr_item['no_dok_uat_usr']; ?></li>
+                <li>Tanggal UAT: <?php echo $input_amgr_item['tanggal_uat_usr']; ?></li>
+                <li>Hasil UAT: <?php echo $input_amgr_item['hasil_uat_usr']; ?></li>
+                <li>Status Revisi: <?php echo $input_amgr_item['status_revisi_usr']; ?></li>
+                <li>List Revisi: <?php echo $input_amgr_item['list_revisi_usr']; ?></li>
+            </ul>
+		</div>
+    <?php endforeach; ?>
+<?php else : ?>
+    <p>Amgr Belum Memberi Input Lanjutan</p>
+<?php endif; ?>
+
+<?php echo validation_errors(); ?>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-developer-input">
   Create Developer Input
@@ -74,9 +107,13 @@
                 <input class="form-control" type="text" name="keterangan"></input>
                 </br>
                 <label for="status_progress">Status</label>
-                <input class="form-control" type="text" name="status_progress"></input>
+                <select class='form-control' id="status_progress" name="status_progress">
+                  <option value="Done">Done</option>
+                  <option value="On Progress">On Progress</option>
+                  <option value="Pending">Pending</option>
+                </select>
                 <br />
-                <label for="tanggal_realisasi">Finish Development</label>
+                <label for="tanggal_realisasi">Tanggal Realisasi</label>
                 <input  class="form-control"  type="date" name="tanggal_realisasi" />
             </div>
             <input type="submit" class="btn btn-primary" name="submit" value="Create Manager Input" />
