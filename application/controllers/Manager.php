@@ -6,6 +6,12 @@
 			$this->load->model('input_model');
 			$this->load->model('manager_model');
 			$this->load->helper('url_helper');
+
+			// controller protection only manager and admin can access
+			if (!$this->ion_auth->in_group('manager') && !$this->ion_auth->is_admin())
+			{
+				redirect('/', 'refresh');
+			}
 		}
 
 		public function index()

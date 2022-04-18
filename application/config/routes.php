@@ -27,6 +27,9 @@ $route['developer/view/(:any)'] = 'developer/view/$1';
 $route['amgr'] = 'amgr/index';
 $route['amgr/view/(:any)'] = 'amgr/view/$1';
 
+$route['auth'] = 'auth/index';
+$route['auth/(:any)'] = 'auth/$1';
+
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

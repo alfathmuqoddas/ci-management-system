@@ -8,6 +8,12 @@ class Amgr extends CI_Controller {
 		$this->load->model('developer_model');
         $this->load->model('amgr_model');
 		$this->load->helper(array('form','url','url_helper'));
+
+        // controller protection only amgr and admin can access
+		if (!$this->ion_auth->in_group('amgr') && !$this->ion_auth->is_admin())
+		{
+			redirect('/', 'refresh');
+		}
 	}
 
     public function index()

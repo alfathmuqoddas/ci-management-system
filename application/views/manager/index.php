@@ -26,13 +26,11 @@
             <td><?php echo $input_item['no_user_request']; ?></td>
             <td><?php echo $input_item['tanggal_user_request']; ?></td>
             <td><?php echo $input_item['short_desc']; ?></td>
-            <?php if($this->session->userdata('user_id') == $input_item['user_id']): ?>
             <td>
                 <div class="btn-group">
                     <a type="button" href="<?php echo site_url(); ?>manager/view/<?php echo $input_item['id']; ?>" class="btn btn-primary btn-sm">Details</a>
                 </div>
             </td>
-            <?php endif; ?>
         </tr>
     <?php endforeach; ?>
     </tbody>

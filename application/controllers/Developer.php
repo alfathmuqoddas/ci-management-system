@@ -8,6 +8,12 @@
 			$this->load->model('developer_model');
 			$this->load->model('amgr_model');
 			$this->load->helper('url_helper');
+
+			// controller protection only developer and admin can access
+			if (!$this->ion_auth->in_group('developer') && !$this->ion_auth->is_admin())
+			{
+				redirect('/', 'refresh');
+			}
 		}
 
 		public function index()

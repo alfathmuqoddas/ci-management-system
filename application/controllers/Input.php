@@ -4,14 +4,23 @@ class Input extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('input_model');
+		$this->load->model('Ion_auth_model');
 		$this->load->model('manager_model');
 		$this->load->model('developer_model');
 		$this->load->model('amgr_model');
 		$this->load->helper(array('form','url','url_helper'));
+
+		// controller protection only admin and user_biasa can access
+		if (!$this->ion_auth->in_group('user_biasa') && !$this->ion_auth->is_admin())
+		{
+			redirect('/', 'refresh');
+		}
+
 	}
 
 	public function index()
 	{
+
 		$data['input'] = $this->input_model->get_input();
 		$data['title'] = 'User Input';
 

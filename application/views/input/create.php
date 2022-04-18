@@ -1,4 +1,3 @@
-<?php if($this->session->userdata('logged_in')) : ?>
 <h2><?php echo $title; ?></h2>
 
 <?php echo validation_errors(); ?>
@@ -30,5 +29,3 @@
     <input type="submit" class="btn btn-primary" name="submit" value="Create User Input" />
 
 </form>
-<?php endif; ?>
-

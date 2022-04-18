@@ -1,8 +1,6 @@
 <h2><?php echo $title; ?></h2>
 
-<?php if($this->session->userdata('logged_in')) : ?>
 <a class="btn btn-primary" href="<?php echo site_url(); ?>/input/create">Create Input</a>
-<?php endif; ?>
 
 <div class="overflow-auto">
 <table class="table table-sm table-hover table-striped mt-5">
@@ -32,7 +30,6 @@
             <td><?php echo $input_item['tanggal_user_request']; ?></td>
             <td><?php echo $input_item['short_desc']; ?></td>
             <!-- <td><?php echo $input_item['response']; ?></td> -->
-            <?php if($this->session->userdata('user_id') == $input_item['user_id']): ?>
             <td>
                 <div class="btn-group">
                     <a type="button" href="<?php echo site_url(); ?>input/view/<?php echo $input_item['id']; ?>" class="btn btn-primary btn-sm">Details</a>
@@ -41,7 +38,6 @@
                     <!-- <a type="button" href="<?php echo site_url(); ?>input/delete/<?php echo $input_item['id']; ?>" class="btn btn-danger btn-sm">Delete</a> -->
                 </div>
             </td>
-            <?php endif; ?>
         </tr>
     <?php endforeach; ?>
     </tbody>

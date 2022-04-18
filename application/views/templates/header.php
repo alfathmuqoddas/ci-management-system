@@ -19,22 +19,34 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <!-- <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>posts">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>categories">Categories</a></li> -->
-          <?php if(!$this->session->userdata('logged_in')) : ?>
-            <li class="nav-item"><a class="nav-link btn btn-primary btn-sm mr-2" href="<?php echo base_url(); ?>users/login">Login</a></li>
+          <?php if(!$this->ion_auth->logged_in()): ?>
+            <li class="nav-item"><a class="nav-link btn btn-primary btn-sm mr-2" href="<?php echo base_url(); ?>auth">Login</a></li>
             <li class="nav-item"><a class="nav-link btn btn-success btn-sm" href="<?php echo base_url(); ?>users/register">Register</a></li>
-          <?php endif; ?>
-          <?php if($this->session->userdata('logged_in')) : ?>
+          <?php elseif($this->ion_auth->is_admin()): ?>
             <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>input">User Input</a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>manager">Manager Input</a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>developer">Developer Input</a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>amgr">Amgr Input</a></li>
-            <!-- <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>posts/create">Create Post</a></li> -->
-            <!-- <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>categories/create">Create Category</a></li> -->
-            <li class="nav-item"><a class="nav-link btn btn-sm btn-danger" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
+          <?php elseif($this->ion_auth->in_group('user_biasa')): ?>
+            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>input">User Input</a></li>
+          <?php elseif($this->ion_auth->in_group('manager')): ?>
+            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>manager">Manager Input</a></li>
+          <?php elseif($this->ion_auth->in_group('developer')): ?>
+            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>developer">Developer Input</a></li>
+          <?php elseif($this->ion_auth->in_group('amgr')): ?>
+            <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>amgr">Amgr Input</a></li>
+          <?php endif; ?>
+          <?php $user = $this->ion_auth->user()->row(); if($user) : ?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php
+                echo $user->email;
+                ?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<?php echo base_url(); ?>users/logout">Logout</a>
+              </div>
+            </li>
           <?php endif; ?>
           </ul>
         </div>
@@ -46,36 +58,28 @@
       <!-- Flash messages -->
       <?php if($this->session->flashdata('user_registered')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>'; ?>
-      <?php endif; ?>
 
-      <?php if($this->session->flashdata('post_created')): ?>
+      <?php elseif($this->session->flashdata('post_created')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_created').'</p>'; ?>
-      <?php endif; ?>
 
-      <?php if($this->session->flashdata('post_updated')): ?>
+      <?php elseif($this->session->flashdata('post_updated')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_updated').'</p>'; ?>
-      <?php endif; ?>
 
-      <?php if($this->session->flashdata('category_created')): ?>
+      <?php elseif($this->session->flashdata('category_created')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('category_created').'</p>'; ?>
-      <?php endif; ?>
 
-      <?php if($this->session->flashdata('post_deleted')): ?>
+      <?php elseif($this->session->flashdata('post_deleted')): ?>
         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('post_deleted').'</p>'; ?>
-      <?php endif; ?>
 
-      <?php if($this->session->flashdata('login_failed')): ?>
+      <?php elseif($this->session->flashdata('login_failed')): ?>
         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
-      <?php endif; ?>
 
-      <?php if($this->session->flashdata('user_loggedin')): ?>
+      <?php elseif($this->session->flashdata('user_loggedin')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedin').'</p>'; ?>
-      <?php endif; ?>
 
-       <?php if($this->session->flashdata('user_loggedout')): ?>
+       <?php elseif($this->session->flashdata('user_loggedout')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</p>'; ?>
-      <?php endif; ?>
 
-      <?php if($this->session->flashdata('category_deleted')): ?>
+      <?php elseif($this->session->flashdata('category_deleted')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('category_deleted').'</p>'; ?>
       <?php endif; ?>
